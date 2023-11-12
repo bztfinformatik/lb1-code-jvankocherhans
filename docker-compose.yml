@@ -1,0 +1,50 @@
+version: "1"
+
+services:
+  proxy:
+    build: ./src/proxy/
+    volumes:
+      - ./src/proxy/sites/:/usr/local/apache2/conf/sites/
+    ports:
+      - 8080:80
+      - 8081:8081
+    networks:
+      - frontnet
+  
+  db:
+    image: mongo:6.0
+    volumes:
+      - ./src/db/data/:/data/db/
+    command: mongod --quiet --logpath /dev/null 
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+    networks:
+      - backnet
+    healthcheck:
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 25
+
+  compass:
+    image: mongo-express:latest
+
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${DB_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${DB_PASSWORD}
+      - ME_CONFIG_MONGODB_SERVER=db 
+      # - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+      - ME_CONFIG_BASICAUTH_USERNAME=${COMPASS_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${COMPASS_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backnet
+      - frontnet
+
+networks:
+  frontnet:
+  backnet:

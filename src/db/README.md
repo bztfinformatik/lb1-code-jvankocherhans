@@ -1,0 +1,1 @@
+All the mongoDB files will be loacated in the **data** folder.
