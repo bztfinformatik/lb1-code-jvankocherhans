@@ -14,7 +14,7 @@ services:
   db:
     image: mongo:6.0
     volumes:
-      - ./src/db/data/:/data/db/
+      - ./src/mongodb/data/:/data/db/
     command: mongod --quiet --logpath /dev/null 
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME}
