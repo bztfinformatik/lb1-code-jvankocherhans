@@ -1,0 +1,39 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}
+    dashborad
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    
+<h2>All scripts</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Hostname</th>
+      <th scope="col">IP</th>
+      <th scope="col">Type</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for script in scripts %}
+    <tr>
+      <td>{{script.scriptID}}</td>
+      <td>{{script.scriptName}}</td>
+      <td>{{script.scriptContent}}</td>
+      <td>
+        RUN SCRIPT
+      </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+
+</div>
+{% endblock %}

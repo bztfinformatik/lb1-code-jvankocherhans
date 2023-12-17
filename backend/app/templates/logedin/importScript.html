@@ -1,0 +1,24 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}
+    dashborad
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Script Name</label>
+            {{ form.scriptName(class_='form-control') }}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Script Inhalt</label>
+            {{ form.scriptContent(class_='form-control') }}
+          </div>
+        {{ form.submit(class_='btn btn-primary')}}
+    </form>
+
+</div>
+{% endblock %}

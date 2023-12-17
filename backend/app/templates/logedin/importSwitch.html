@@ -1,0 +1,28 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}
+    dashborad
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Hostname</label>
+            {{ form.hostname(class_='form-control') }}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">IP</label>
+            {{ form.ip(class_='form-control') }}
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Type</label>
+            {{ form.switchType(class_='form-control') }}
+          </div>
+        {{ form.submit(class_='btn btn-primary')}}
+    </form>
+
+</div>
+{% endblock %}
