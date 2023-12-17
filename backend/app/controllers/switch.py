@@ -8,10 +8,14 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from forms.SwitchForm import ImportSwitch
 from model.models import Switch, db
 
+from controllers.decorater import requires_access_level
+from model.ACCESS import ACCESS
+
+
 switch_blueprint = Blueprint('switch_blueprint', __name__)
 
 @switch_blueprint.route("/logedin/importSwitch",  methods=["GET", "POST"])
-@login_required
+@requires_access_level(ACCESS['admin'])
 def importSwitch():
     # Aufbau der Session
     session: sqlalchemy.orm.scoping.scoped_session = db.session
@@ -33,7 +37,7 @@ def importSwitch():
 
 
 @switch_blueprint.route("/logedin/showSwitches")
-@login_required
+@requires_access_level(ACCESS['user'])
 def showSwitches():
     # workaround für sesssion Autocomplete
     session: sqlalchemy.orm.Session = db.session

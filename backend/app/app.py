@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 from model.models import db
-from controllers.importClient import importClient_blueprint
+from controllers.client import client_blueprint
 from controllers.script import script_blueprint
 from controllers.switch import switch_blueprint
 from controllers.index import index_blueprint
@@ -42,7 +42,7 @@ db.init_app(app)
 app.register_blueprint(index_blueprint)
 app.register_blueprint(products_blueprint)
 app.register_blueprint(users_blueprint)
-app.register_blueprint(importClient_blueprint)
+app.register_blueprint(client_blueprint)
 app.register_blueprint(showReactions_blueprint)
 app.register_blueprint(switch_blueprint)
 app.register_blueprint(script_blueprint)

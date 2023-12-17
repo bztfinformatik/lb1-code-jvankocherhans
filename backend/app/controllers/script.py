@@ -8,11 +8,14 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, log
 from forms.ScriptForm import ImportScript
 from model.models import Script, db
 
+from controllers.decorater import requires_access_level
+from model.ACCESS import ACCESS
+
 script_blueprint = Blueprint('script_blueprint', __name__)
 
 
 @script_blueprint.route("/logedin/importScript", methods=["GET", "POST"])
-@login_required
+@requires_access_level(ACCESS['admin'])
 def importScript():
     # Aufbau der DB Session
     session: sqlalchemy.orm.scoping.scoped_session = db.session
@@ -36,7 +39,7 @@ def importScript():
 
 
 @script_blueprint.route("/logedin/runScript")
-@login_required
+@requires_access_level(ACCESS['user'])
 def showScript():
         # workaround für sesssion Autocomplete
     session: sqlalchemy.orm.Session = db.session

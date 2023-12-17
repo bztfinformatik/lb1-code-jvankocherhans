@@ -19,7 +19,7 @@ services:
     networks:
       - backnet
     environment:
-      - MYSQL_DATABASE=classicmodels
+      - MYSQL_DATABASE=arpaconda
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
       - MYSQL_USER=user
       - MYSQL_PASSWORD=pass
@@ -45,6 +45,16 @@ services:
       db:
         condition: service_healthy
   
+  radius:
+    build: ./services/radius
+    restart: always
+    ports:
+      - 1813:1813
+      - 1508:1508
+    networks:
+      - backnet
+      - frontnet
+
   adminer:
     image: adminer
     ports:

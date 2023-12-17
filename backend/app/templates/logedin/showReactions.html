@@ -6,6 +6,27 @@
 
 {% block body %}
 <div class="container mt-3">
-    showreactiopns
+       
+<h2>All reactions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Logevent</th>
+      <th scope="col">Datum</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for log in logs %}
+    <tr>
+      <td>{{log.logEvent}}</td>
+      <td>{{log.date}}</td>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+
 </div>
 {% endblock %}

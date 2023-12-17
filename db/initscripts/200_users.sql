@@ -1,4 +1,4 @@
-USE `classicmodels`;
+USE `arpaconda`;
 
 DROP TABLE IF EXISTS `user`;
 
