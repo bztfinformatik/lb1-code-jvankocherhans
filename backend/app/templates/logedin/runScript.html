@@ -12,9 +12,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Hostname</th>
-      <th scope="col">IP</th>
-      <th scope="col">Type</th>
+      <th scope="col">ID</th>
+      <th scope="col">Function</th>
+      <th scope="col">Code</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -26,7 +26,8 @@
       <td>{{script.scriptName}}</td>
       <td>{{script.scriptContent}}</td>
       <td>
-        RUN SCRIPT
+        <a class="btn" href="/logedin/deleteScript/{{ script.scriptID }}">🗑️</a>
+        <a class="btn" href="">▶️</a>
       </td>
     </tr>
     {% endfor %}

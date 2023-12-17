@@ -11,3 +11,4 @@ CREATE TABLE `switch` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO switch VALUES ("ac-sw-p01", "10.128.250.253", "Catalyst 3560"); 
+INSERT INTO switch VALUES ("ac-sw-p02", "10.128.250.254", "Catalyst 3560"); 

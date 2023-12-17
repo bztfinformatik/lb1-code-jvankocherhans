@@ -1,6 +1,7 @@
 import sqlalchemy
 import sqlalchemy.orm
 
+# from netmiko import ConnectHandler
 from flask import redirect, request, flash
 from flask.templating import render_template
 from flask import Blueprint
@@ -48,3 +49,18 @@ def showScript():
     scripts = session.query(Script).order_by(Script.scriptID).all()
 
     return render_template("logedin/runScript.html", scripts=scripts)
+
+
+@script_blueprint.route("/logedin/deleteScript/<id>")
+@requires_access_level(ACCESS['user'])
+def deleteScript(id):
+    # workaround für sesssion Autocomplete
+    session: sqlalchemy.orm.Session = db.session
+    # Nach Switch Filter mit der bestimmten ID
+    scriptToDelete = db.session.query(Script).filter(Script.scriptID == int(id))
+    # gefunden Switch entfernen
+    scriptToDelete.delete()
+    # DB Commit
+    db.session.commit()
+
+    return redirect("/logedin/runScript")

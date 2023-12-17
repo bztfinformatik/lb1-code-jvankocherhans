@@ -1,40 +1,41 @@
 {% extends 'dashboard_base.html' %}
 
 {% block title %}
-    dashborad
+dashborad
 {% endblock %}
 
 {% block body %}
 <div class="container mt-3">
-    
-
-<h2>All Switches</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Hostname</th>
-      <th scope="col">IP</th>
-      <th scope="col">Type</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    {% for switch in switches %}
-    <tr>
-      <td>{{switch.hostname}}</td>
-      <td>{{switch.ip}}</td>
-      <td>{{switch.switchType}}</td>
-      <td>
-        DELETE
-      </td>
-    </tr>
-    {% endfor %}
 
 
-  </tbody>
-</table>
+    <h2>All Switches</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Hostname</th>
+                <th scope="col">IP</th>
+                <th scope="col">Type</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for switch in switches %}
+            <tr>
+                <td>{{switch.hostname}}</td>
+                <td>{{switch.ip}}</td>
+                <td>{{switch.switchType}}</td>
+                <td>
+                    <a class="btn" href="/logedin/deleteSwitch/{{ switch.hostname }}">🗑️</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
 
 </div>
 {% endblock %}

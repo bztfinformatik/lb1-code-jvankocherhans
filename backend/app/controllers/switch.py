@@ -47,3 +47,18 @@ def showSwitches():
 
     return render_template("logedin/showSwitches.html", switches=switches)
 
+
+@switch_blueprint.route("/logedin/deleteSwitch/<hostname>")
+@requires_access_level(ACCESS['user'])
+def deleteSwitche(hostname):
+    # workaround für sesssion Autocomplete
+    session: sqlalchemy.orm.Session = db.session
+    # Nach Switch Filter mit dem bestimmten Hostname
+    switchToDelete = db.session.query(Switch).filter(Switch.hostname == hostname)
+    # gefunden Switch entfernen
+    switchToDelete.delete()
+    # DB Commit
+    db.session.commit()
+
+    return redirect("/logedin/showSwitches")
+

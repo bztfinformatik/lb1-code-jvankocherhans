@@ -8,3 +8,4 @@ CREATE TABLE `script` (
   `scriptContent` longtext,
   PRIMARY KEY (`scriptID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
