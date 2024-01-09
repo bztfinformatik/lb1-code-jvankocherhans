@@ -12,10 +12,12 @@
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Client Mac</label>
             {{ form.mac(class_='form-control') }}
+            <p style="color:red">{% for error in form.mac.errors %} {{ error }} {% endfor%}</p>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Client Hostname</label>
             {{ form.hostname(class_='form-control') }}
+            <p style="color:red">{% for error in form.hostname.errors %} {{ error }} {% endfor%}</p>
           </div>
         {{ form.submit(class_='btn btn-primary')}}
     </form>
