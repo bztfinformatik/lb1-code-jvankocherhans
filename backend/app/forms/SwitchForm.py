@@ -23,8 +23,8 @@ class ImportSwitch(FlaskForm):
             # Regex for valid Hostname -> Alphanumeric, Hyphens and Dots allowed
             regex=r'\b(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b',
             message='Invalid IP address format. Please use numbers Seperated by Dots: 0.0.0.0.'
-        )    
-    ])
+        )])
+    
     switchType = StringField(validators=[InputRequired()])
 
     submit = SubmitField('Create')

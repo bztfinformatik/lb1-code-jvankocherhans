@@ -15,8 +15,8 @@ class ImportScript(FlaskForm):
             # Regex for valid Hostname -> Alphanumeric, Hyphens and Dots allowed
             regex=r'^[a-zA-Z0-9_]+$',
             message='Invalid scriptname. Please use alphanumeric characters and underlines.'
-        )
-    ])
+        )])
+    
     scriptContent = TextAreaField(validators=[InputRequired()])
 
     submit = SubmitField('Create Script')

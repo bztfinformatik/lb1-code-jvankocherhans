@@ -15,8 +15,8 @@ class ImportClient(FlaskForm):
             # Regex for valid MAC-Address
             regex=r'^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$',
             message='Invalid MAC address format. Please use XX:XX:XX:XX:XX:XX'
-        )
-    ])
+        )])
+    
     hostname = StringField('Hostname', validators=[InputRequired(),
         Regexp(
             # Regex for valid Hostname -> Alphanumeric, Hyphens and Dots allowed
